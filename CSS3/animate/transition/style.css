@@ -1,0 +1,19 @@
+body{
+	margin:100px
+}
+div{
+	width: 200px;
+	height: 200px;
+	background: #fff;
+	border:1px solid green;
+	transition-property:all;
+	transition-duration: 1s;
+	transition-timing-function:cubic-bezier(0.25, 0.67, 0.11, 0.55);
+	transition-delay: 0s, 1s, 0s;
+	transition: all 1s ease 0s;
+}
+div:hover{
+	background: orange;
+	color:#fff;
+	margin-left:100px
+}

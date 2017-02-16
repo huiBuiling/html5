@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>使用border-color实现等高布局</title>
+	<style type="text/css">
+		.box{
+			border-left:300px solid #ccc;
+		}
+		.left{
+			width: 300px;
+			margin-left: -300px;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<nav class="left">
+		<h3>导航1</h3>
+	</nav>
+	<section>
+		<div class="module">模块1<br/>模块1<br/>模块1<br/>模块1<br/></div>	
+	</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>消除图片底部间隙的方法</title>
+	<style type="text/css">
+	    /*图片底部间隙是隐匿文本节点起作用，内联元素要基线对齐*/
+		p{background: #eee;;line-height: 0}   /*设置行高为0*/
+		/*img{height: 200px;display: block;}*/    /*块状化*/
+		/*img{height: 200px; vertical-align: bottom;}*/    /*底部对齐*/
+		img{height: 200px;}
+	</style>
+</head>
+<body>
+	<p>	
+		<img src="http://ww3.sinaimg.cn/mw690/9c7cd2cdjw1e60hntjcq2j211y0lcq5e.jpg">
+	</p>
+</body>
+</html>

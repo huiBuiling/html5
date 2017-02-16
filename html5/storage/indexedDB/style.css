@@ -1,0 +1,115 @@
+body {
+  font-size: 0.8em;
+  font-family: Sans-Serif;
+  max-width: 960px;
+  margin: 0 auto;
+  background-color: #f4f5f5;
+}
+.box {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 40px;
+  box-shadow: 0 .2em .5em 0 rgba(0,0,0,.1);
+}
+
+form {
+  background-color: #fff;
+  border-radius: 0.3em;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 .2em .5em 0 rgba(0,0,0,.1);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input {
+  border: 1px solid #eaeaea;
+  padding: 0.3em;
+  border-radius: 0.2em;
+}
+
+.required:after {
+  content: "*";
+  color: red;
+}
+
+.button-pane {
+  margin-top: 1em;
+}
+
+#documents-list {
+  background-color: #eeeeee;
+}
+
+.action-success {
+  margin-left: 1em;
+  padding: 0.5em;
+  color: #00d21e;
+  background-color: #eeeeee;
+  border-radius: 0.2em;
+}
+
+.action-failure {
+  margin-left: 1em;
+  padding: 0.5em;
+  color: #ff1408;
+  background-color: #eeeeee;
+  border-radius: 0.2em;
+}
+
+.presence-no {
+  font-style: italic;
+}
+
+.note {
+  font-size: smaller;
+}
+input[type="button"],
+input[type="reset"]{
+  border: none;
+  color: #fff;
+  background-color: #007fff;
+}
+h2 {
+  text-align: center;
+}
+.search-box label{
+  display: block;
+  margin-bottom: 20px;
+}
+.search-box label input {
+  margin-left: 40px;
+}
+.search-box button {
+  display: inline-block;
+  padding: 4px 20px;
+  margin-bottom: 20px;
+  border: none;
+  color: #fff;
+  background-color: #007fff;
+  cursor: pointer;
+}
+.search-result {
+  width: 100%;
+  margin-top: 40px;
+  line-height: 2.4;
+  border: 1px solid #eaeaea;
+}
+.search-result th {
+  color: #333;
+  background: #eaeaea;
+}
+.search-result td {
+  color: #666;
+  text-align: center;
+}
+.search-result tr {
+  border-bottom: 1px solid #eaeaea;
+}
+.search-result .delete {
+  color: #d21a1a;
+  cursor: pointer;
+}

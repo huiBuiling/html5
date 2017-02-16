@@ -1,0 +1,27 @@
+body{
+	margin:100px
+}
+div{
+	width: 200px;
+	height: 200px;
+	background: #fff;
+	border:1px solid green;
+	animation-name:myani;  
+	animation-duration:1s;  
+	animation-timing-function: ease-in;  
+	/*animation-iteration-count: infinite;  循环次数*/ 
+	/*animation-direction: alternate; 设置缓动方向交替*/
+	/*设置停止播放动animation-play-state: paused;*/
+	animation: myani 1s ease 2 alternate 0s both;
+}
+
+@keyframes myani{
+	0%,100%{ 
+		background-color:white;
+		margin-left:0;
+	}
+	50% { 
+		background-color:black;
+		margin-left:100px;
+	}
+}

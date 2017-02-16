@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>使用border-color实现对话框</title>
+	<style type="text/css">
+		.fa{
+		    width: 100px;
+		    height: 30px;
+		    margin: 0 auto;
+		    background: gray;
+		   	position: relative;
+		   	text-align: center;
+	    }
+		.son{
+			position: absolute;
+			left: -6px;
+			top:0;
+			width: 0;
+			height:0;
+			border:10px solid;
+			border-color: gray gray transparent transparent
+		}
+	</style>
+</head>
+<body>
+	<div class="fa">
+		测试
+		<div class="son"></div>
+	</div>
+</body>
+</html>

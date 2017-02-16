@@ -1,0 +1,16 @@
+CACHE MANIFEST
+#version 1.1
+
+CACHE:
+#离线缓存的资源
+style.css
+1.png
+2.png
+
+NETWORK:
+#每次重新拉取的文件
+*
+
+FALLBACK:
+#离线情况下代替文件
+404.html
