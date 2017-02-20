@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas画弧和圆</title>
+		<style type="text/css">
+			#canvas{
+				border:1px solid #ddd;
+				display: block;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+<!--
+context.arc(
+  centerx，centery（圆心得坐标x，y），radius（半径），startingAngle（开始的弧度值），endingAngle（结束的弧度值），anticlockwise=false（顺时针，true为逆时针）
+)//也是一种状态
+
+
+//beginPath()和closePath()不一定要同时出现，beginPath()指要重新开始一段路径,closePath()指要结束当前路径，且封闭当前路径。不需要收尾相连，去掉closePath（）。closePath（）对于fill()是没有用的。
+-->
+		<canvas id="canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+		window.onload=function(){
+
+			var canvas=document.getElementById('canvas');
+			canvas.width=1024;
+			canvas.height=768;
+			var ctx=canvas.getContext('2d');
+			ctx.lineWidth=5;
+			ctx.strokeStyle="#005588";
+			for(var i=0;i<10;i++){
+			    ctx.beginPath();
+			    ctx.arc(50 + i*100, 60,40,0,2*Math.PI*(i+1)/10);
+			    ctx.closePath();  
+			    ctx.stroke();
+			};
+			for(var i=0;i<10;i++){
+			    ctx.beginPath();
+			    ctx.arc(50 + i*100, 180,40,0,2*Math.PI*(i+1)/10);
+			    ctx.stroke();
+			};
+			for(var i=0;i<10;i++){
+			    ctx.beginPath();
+			    ctx.arc(50 + i*100, 320,40,0,2*Math.PI*(i+1)/10,true);
+			    ctx.closePath();
+			    ctx.stroke();
+			};
+			for(var i=0;i<10;i++){
+			    ctx.beginPath();
+			    ctx.arc(50 + i*100, 420,40,0,2*Math.PI*(i+1)/10,true);
+			    ctx.stroke();
+			}
+
+			ctx.fillStyle="#9cf"; 
+			for(var i=0;i<10;i++){
+			    ctx.beginPath();
+			    ctx.arc(50 + i*100, 560,40,0,2*Math.PI*(i+1)/10,true);
+			    ctx.closePath();
+			    ctx.fill();
+			};
+			for(var i=0;i<10;i++){
+			    ctx.beginPath();
+			    ctx.arc(50 + i*100,700,40,0,2*Math.PI*(i+1)/10,true);
+			    ctx.fill();
+			}
+		}
+		</script>
+	</body>
+</html>

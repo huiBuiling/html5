@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas画多个多边形</title>
+		<style type="text/css">
+			#canvas{
+				border:1px solid #ddd;
+				display: block;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+		(function(){
+			var canvas=document.getElementById('canvas');
+			var content=canvas.getContext('2d');
+			//第一个三角形
+			content.beginPath();  //状态开始
+			content.moveTo(100,100); 
+			content.lineTo(400,400); 
+			content.lineTo(100,400);
+			content.lineTo(100,100);
+			content.closePath(); //状态结束
+
+			content.lineWidth=5;   //直线的宽度
+			content.strokeStyle="#058";   //直线的颜色
+			content.stroke(); //绘制线条
+
+			//第二个线段
+			content.beginPath();
+			content.moveTo(200,100); 
+			content.lineTo(500,400);
+			content.closePath();
+			content.stroke();
+			
+		})();
+		</script>
+	</body>
+</html>

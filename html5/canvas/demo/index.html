@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas入门</title>
+		<style type="text/css">
+			#canvas{
+				border:1px solid #ddd;
+				display: block;
+				margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+		给Canvas指定大小时不能用css文件指定，必须写在Canvas的标签内，因为Canvas的大小不仅仅是指这个标签的大小，还指定了显示内容的分辨率的大小。
+		1.canvas 宽高不需要 带单位。
+		2.canvas 如果浏览器支持里面的内容不会展示出来。
+		3.canvas 不要使用css设置宽高 采用内联样式或者ctx.width 设置，默认宽300 高150
+		-->
+		<canvas id="canvas" width="1024" height="768">
+			当前浏览器不支持canvas，如果支持，那么这句会被浏览器忽略
+		</canvas>
+		<script type="text/javascript">
+		(function(){
+			var canvas=document.getElementById('canvas');
+			//canvas.width=1024;
+			//canvas.height=768;
+			if(canvas.getContext('2d')){
+				var content=canvas.getContext('2d');//使用content，即绘图上下文，绘制，2d绘制
+			}else{
+				alert('浏览器不支持canvas！');
+			}
+			console.log(canvas);
+		})();
+		</script>
+	</body>
+</html>

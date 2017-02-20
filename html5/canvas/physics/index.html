@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas做物理实验</title>
+		<style type="text/css">
+				#canvas{
+					border:1px solid #ddd;
+					display: block;
+					margin: 20px auto;
+				}
+		</style>
+	</head>
+	<body>	
+		<canvas id="canvas"></canvas>
+		<script type="text/javascript">
+			var ball={x:500,y:100,r:20,g:2,vx:-10,vy:0,color:"#058"};
+			window.onload=function(){
+				var canvas=document.getElementById('canvas');
+				canvas.width=500;
+				canvas.height=400;
+
+				var content=canvas.getContext('2d');
+
+				setInterval(function(){
+					render(content);
+					update();
+				},50);
+			}
+
+			/**
+			 * 画球
+			 */
+			function render(cxt){
+				cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
+
+				cxt.fillStyle=ball.color;
+				cxt.beginPath();
+				cxt.arc(ball.x , ball.y , ball.r, 0 , 2*Math.PI);
+				cxt.closePath();
+
+				cxt.fill();
+			}
+
+			/**
+			 * 球的状态改变
+			 */
+			function update(){
+				ball.x+=ball.vx;  //水平方向的位移
+				ball.y+=ball.vy;  //竖直方向的位移
+				ball.vy+=ball.g;  //竖直方向的速度
+
+				//碰撞检测
+				if(ball.y>=400-ball.r){
+					ball.y=400-ball.r;
+					ball.vy=-ball.vy*0.7;
+					ball.vx*=0.95;  //使得让球在中间停下来成为可能
+				}
+
+				//碰到左壁反弹
+				if(ball.x<=ball.r){
+					ball.x=ball.r;
+					ball.vx=-ball.vx*0.6;
+				}
+
+				//碰到右壁反弹
+				if(ball.x>=500-ball.r){
+					ball.x=500-ball.r;
+					ball.vx=-ball.vx*0.6;
+				}
+
+				//当水平方向的速度小于0.5（假设0.5是极限小的速度）时，让球停下来
+				if(Math.abs(ball.vx)<=0.5){
+					ball.vx=0;
+					ball.vy=0;
+					ball.y=400-ball.r;
+					return;
+				}
+			}
+		</script>
+	</body>
+</html>
