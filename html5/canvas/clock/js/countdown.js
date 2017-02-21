@@ -1,16 +1,25 @@
 var WINDOW_WIDTH = 1024;
-var WINDOW_HEIGHT = 600;
+var WINDOW_HEIGHT = 768;
 var RADIUS = 8; //秋的半径
 var MARGIN_TOP = 60; //距离画布的上边缘
 var MARGIN_LEFT = 30; //距离画布的左边缘
 
-const endTime = new Date(2017, 1, 24, 18, 47, 52); //结束时间
+var endTime = new Date(); //结束时间
+endTime.setTime(endTime.getTime()+48*3600*1000);
+
 var curShowTimeSeconds = 0; //相差的秒数
 
 var balls = [];
 const colors = ["#33B5E5", "#0099CC", "#AA66CC", "#9933CC", "#99CC00", "#669900", "#FFBB33", "#FF8800", "#FF4444", "#CC0000"]
 
 window.onload = function() {
+    WINDOW_HEIGHT=document.documentElement.clientHeight-20;
+    WINDOW_WIDTH=document.documentElement.clientWidth-20;
+
+    MARGIN_LEFT = Math.round(WINDOW_WIDTH /10);
+    RADIUS = Math.round(WINDOW_WIDTH * 4 / 5 / 108)-1;
+
+    MARGIN_TOP = Math.round(WINDOW_HEIGHT /5);
 
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext("2d");
@@ -29,7 +38,7 @@ window.onload = function() {
 }
 
 /**
- * 得到当前的时间
+ * 得到当前的时间秒数
  * @return {[type]} [description]
  */
 function getCurrentShowTimeSeconds() {
@@ -38,6 +47,13 @@ function getCurrentShowTimeSeconds() {
     ret = Math.round(ret / 1000)
 
     return ret >= 0 ? ret : 0;
+
+    /* 时钟效果
+    var curTime = new Date();
+    var ret = curTime.getHours() * 3600 + curTime.getMinutes() * 60 + curTime.getSeconds();
+
+    return ret;
+    */
 }
 
 /**
@@ -95,12 +111,27 @@ function updateBalls() {
         balls[i].y += balls[i].vy;
         balls[i].vy += balls[i].g;
 
-        //配置检测
+        //碰撞检测
         if (balls[i].y >= WINDOW_HEIGHT - RADIUS) {
             balls[i].y = WINDOW_HEIGHT - RADIUS;
             balls[i].vy = -balls[i].vy * 0.75;
         }
     }
+
+    var cnt=0;  //有多少个小球还在画布中
+
+    for (var i = 0; i < balls.length; i++) {
+        //如果还在画布中
+        if(balls[i].x+RADIUS>0 && balls[i].x-RADIUS<WINDOW_WIDTH){
+            balls[cnt++]=balls[i];  //前cnt个小球保留在画布中
+        }
+    }
+
+    //后面的小球删除
+    while(balls.length>Math.min(300,cnt)){
+        balls.pop();
+    }
+
 }
 
 /**
