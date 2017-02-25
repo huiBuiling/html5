@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>画一片星空</title>
+</head>
+<body>
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+
+<script>
+    window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 500;
+        canvas.height = 500;
+        var context=canvas.getContext('2d');
+
+        context.fillStyle='black';
+        context.fillRect(0,0,canvas.width,canvas.height);
+
+        for(var i=0;i<150;i++){
+            var R=Math.random()*10+10;
+            var x=Math.abs(Math.random()*canvas.width-40)+20;
+            var y=Math.abs(Math.random()*canvas.height-40)+20;
+            var a=Math.random()*360;
+            drawStar(context, R/2.0, R, x, y,a);
+        }
+
+
+        /**
+         *
+         * @param cxt
+         * @param r  小圆的半径
+         * @param R  大圆的半径
+         * @param x  x位移
+         * @param y  y位移
+         * @param rot  旋转的角度
+         */
+        function drawStar(cxt,r,R,x,y,rot){
+            cxt.beginPath();
+            for(var i=0; i<5; i++){
+                // Math.cos((18+i*72)/180*Math.PI  角度转弧度
+                // 画大圆上的顶点
+                cxt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,
+                        -Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+                // 画小圆上的顶点
+                cxt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,
+                        -Math.sin((54+i*72-rot)/180*Math.PI)*r+y);
+            }
+            cxt.closePath();
+            cxt.fillStyle='#fb3';
+            cxt.strokeStyle='#fd5';
+            cxt.lineWidth=3;
+            cxt.lineJoin='round';
+            cxt.fill();
+            cxt.stroke();
+        }
+    }
+</script>
+</body>
+</html>

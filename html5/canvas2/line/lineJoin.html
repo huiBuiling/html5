@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>线条的属性--lineJoin</title>
+</head>
+<body>
+<!--
+线条的属性lineJoin-线条和线条相交时呈现的形态
+属性值：miter(默认，尖角)、bevel（斜接）、round（圆角）
+-->
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+
+<script>
+    window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 500;
+        canvas.height = 500;
+
+        var context=canvas.getContext('2d');
+        context.lineWidth=10;
+        context.strokeStyle='#9cf';
+        //context.lineJoin='bevel';  //斜接
+        //context.lineJoin='round';  //圆接
+        context.lineJoin='miter';   //显示尖角
+        context.miterLimit=2;   //限制尖角的宽度，仅当lineJoin为miter才有效
+
+        context.beginPath();
+        context.moveTo(100,300);
+        context.lineTo(400,300);
+        context.lineTo(100,200);
+        context.stroke();
+    }
+</script>
+</body>
+</html>

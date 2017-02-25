@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绘制线条及closePath的使用</title>
+</head>
+<body>
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+
+<script>
+    window.onload = function(){
+
+        var canvas = document.getElementById("canvas");
+
+        canvas.width = 500;
+        canvas.height = 500;
+
+        var context=canvas.getContext('2d');
+
+        //状态设置
+        context.lineWidth=10;  //宽度
+
+        context.beginPath();
+        context.moveTo(50,50); //这里moveTo也可以换成lineTo,因为它前面有beginPath
+        context.lineTo(100,100);
+        context.lineTo(50,150);
+        context.closePath();//用closePath来封闭当前的路径，会自动将最后一个顶点和第一个顶点连接
+        context.strokeStyle='#9cf';  //颜色
+        context.stroke();   //绘制线条
+
+        context.beginPath();
+        context.moveTo(100,50);
+        context.lineTo(150,100);
+        context.lineTo(100,150);
+        context.closePath();
+
+        context.strokeStyle='green';  //颜色
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(150,50);
+        context.lineTo(200,100);
+        context.lineTo(150,150);
+        context.closePath();
+
+        context.strokeStyle='red';  //颜色
+        context.fillStyle='yellow';  //填充的颜色
+
+        context.fill();   //填充背景
+        context.stroke();  //绘制线条
+
+        // 注意：如果需要描边得更准确些，则把stroke()放在最后
+    }
+</script>
+</body>
+</html>

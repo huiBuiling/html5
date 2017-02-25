@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>线条的属性--lineCap</title>
+</head>
+<body>
+<!--
+线条的属性：lineCap,即设置线条两端的形状
+属性值:butt(默认)、round(圆头)、square（方头）
+-->
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+
+<script>
+    window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        canvas.width = 500;
+        canvas.height = 500;
+
+        var context=canvas.getContext('2d');
+        context.lineWidth=50;
+        context.strokeStyle='#9cf';
+
+        context.beginPath();
+        context.moveTo(100,300);
+        context.lineTo(400,300);
+        context.lineCap='butt';
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(100,100);
+        context.lineTo(400,100);
+        context.lineCap='round';  //会特意多出圆形的头
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(100,200);
+        context.lineTo(400,200);
+        context.lineCap='square';  //会特意多出方形的头
+        context.stroke();
+
+
+    }
+</script>
+</body>
+</html>

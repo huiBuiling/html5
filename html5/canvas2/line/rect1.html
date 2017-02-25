@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>画矩形</title>
+</head>
+<body>
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+
+<script>
+    window.onload = function(){
+
+        var canvas = document.getElementById("canvas");
+        canvas.width = 500;
+        canvas.height = 500;
+        var context=canvas.getContext('2d');
+
+        context.rect(100,100,200,150); //规划出一个矩形
+        context.stroke();  //绘制
+
+        //context.fillRect(100,100,200,150);//等价于规划和填充，使用当前的颜色作为线条的颜色
+        //context.strokeRect(100,100,200,150);//等价于规划和绘制，使用当前的颜色作为线条的颜色
+
+
+    }
+</script>
+</body>
+</html>
