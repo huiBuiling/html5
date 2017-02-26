@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>探照灯</title>
+    <style>
+        #canvas{
+            border:1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600">
+    当前浏览器不支持Canvas
+</canvas>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var canvas = document.getElementById('canvas');
+        var context=canvas.getContext('2d');
+        var w =canvas.width;
+        var h =canvas.height
+        //探照灯
+        var ball={
+            x:w/2,
+            y:h/2,
+            r:150,
+            vx:Math.random()*5+10,
+            vy:Math.random()*5+10
+        }
+        var rot = 0;
+        setInterval(function(){
+            draw();
+            update();
+        },40);
+
+        /**
+         * 绘制探照灯
+         * */
+        function draw(){
+            context.clearRect(0,0,w,h);  //清空画布
+
+            context.save();
+            //黑色长方形
+            context.beginPath();
+            context.fillStyle='black'
+            context.fillRect(0,0,w,h);
+            /*  圆形探照灯
+             context.beginPath();
+             context.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
+             context.fillStyle='white';
+             context.fill();
+             context.clip();
+             */
+            //探照灯
+            context.save();
+            context.translate(ball.x,ball.y);
+            context.rotate(rot /180 *Math.PI );  //旋转
+            context.scale(ball.r,ball.r);
+            drawStar(context);
+            context.fillStyle="#fff";
+            context.fill();
+            context.restore();
+            context.clip();
+            //绘画文字
+            context.beginPath();
+            context.font='bold 120px Arial';
+            context.textAlign='center';
+            context.fillStyle='#ff55cc';
+            context.fillText('Canvas',w/2,h/3);
+            context.fillText('Canvas',w/2,h/4*3);
+            context.restore();
+        }
+
+        /**
+         * 画星星的标准函数
+         * @param ctx
+         */
+        function drawStar(ctx) {
+            ctx.beginPath();
+            for(var i=0;i<5;i++){
+                ctx.lineTo(Math.cos((18+i*72)/180*Math.PI),-Math.sin((18+i*72)/180*Math.PI));
+                ctx.lineTo(Math.cos((54+i*72)/180*Math.PI),-Math.sin((54+i*72)/180*Math.PI));
+            }
+            ctx.closePath();
+        }
+
+        /**
+         * 更新，碰撞检测
+         */
+        function update(){
+            rot+=1;
+
+            ball.x+=ball.vx;
+            ball.y+=ball.vy;
+            if(ball.x<=ball.r){
+                ball.x=ball.r;
+                ball.vx=-ball.vx;
+            }
+            if(ball.x>=w-ball.r){
+                ball.x=w-ball.r;
+                ball.vx=-ball.vx;
+            }
+            if(ball.y<=ball.r){
+                ball.y=ball.r;
+                ball.vy=-ball.vy;
+            }
+            if(ball.y>=h-ball.r){
+                ball.y=h-ball.r;
+                ball.vy=-ball.vy;
+            }
+        }
+    }
+</script>
+</body>
+</html>

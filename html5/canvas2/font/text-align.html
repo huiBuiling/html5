@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本对齐之水平对齐</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+
+<script>
+    window.onload=function () {
+        var canvas = document.getElementById('canvas');
+        canvas.width = 500;
+        canvas.height = 500;
+        var context = canvas.getContext('2d');
+
+        context.font='bold 30px Microsoft Yahei';  //设置字体
+
+        context.textAlign='left';
+        context.fillText('textAlign=left',250,100);
+
+        context.textAlign='center';
+        context.fillText('textAlign=center',250,200);
+
+        context.textAlign='right';
+        context.fillText('textAlign=right',250,300);
+
+        context.moveTo(250,0);
+        context.lineTo(250,500);
+        context.stroke();
+
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字体-font</title>
+</head>
+<body>
+<!--
+字体font  默认值："20px sans-serif"。
+font可以设置5个值：context.font="font-style font-variant font-weight font-size font-family"
+
+font-style:normal(默认)、italic(斜体字)、oblique(倾斜字体)
+font-variant:normal(默认)、small-caps（将小写字母以小型大写字母的形式显示）
+font-weight:lighter、normal（默认）、bold、bolder
+font-size:20px（默认）、2em、150%
+font-family:设置多种字体备选、支持@font-face、web安全字体
+
+-->
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+<script>
+    window.onload=function () {
+        var canvas = document.getElementById('canvas');
+        canvas.width = 500;
+        canvas.height = 500;
+        var context = canvas.getContext('2d');
+
+        //绘制实心文本
+        context.font='oblique bold 20px Microsoft Yahei';  //设置字体
+        context.fillText('欢迎大家学习canvas',50,100); //在（50,100）处绘制实心文本
+    };
+</script>
+</body>
+</html>

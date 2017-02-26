@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arcTo的用法</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+
+<script>
+    window.onload=function () {
+        var canvas = document.getElementById('canvas');
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext('2d');
+
+        context.beginPath();
+        context.moveTo(150,150);
+        // arcTo(x1,y1,x2,y2,radius);   (x0,y0)是context最近结束点的坐标。
+        //(x0,y0)和(x1,y1)组成一条直线，(x1,y1),(x2,y2)组成一条直线，和这两条直线相切的圆会有无数个，取其中半径
+        // 为r的圆的圆弧。(x0,y0)是绘制的起点，但不一定是切点，圆弧会从切点处开始。
+        context.arcTo(650,150,650,650,300);
+
+        context.lineWidth = 6;
+        context.strokeStyle = "red";
+        context.stroke();
+
+        //辅助线
+        context.beginPath();
+        context.moveTo(150,150);
+        context.lineTo(650,150);
+        context.lineTo(650,650);
+
+        context.lineWidth = 2;
+        context.strokeStyle = "gray";
+        context.stroke();
+    }
+</script>
+</body>
+</html>

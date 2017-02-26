@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>globalAlpha</title>
+</head>
+<body>
+<!--
+globalAlpha  即设置全局的透明度，默认为1，即不透明
+-->
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+
+<script>
+    window.onload=function () {
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 1200;
+        canvas.height = 800;
+
+        var context = canvas.getContext('2d');
+        //设置透明度
+        context.globalAlpha = 0.8;
+        for(var i=0;i<100;i++){
+            var R = Math.floor(Math.random()*255);
+            var G = Math.floor(Math.random()*255);
+            var B = Math.floor(Math.random()*255);
+
+            context.fillStyle = "rgb("+R+","+G+","+B+")";
+
+            context.beginPath();
+            context.arc(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*100,0,2*Math.PI);
+            context.closePath();
+            context.fill();
+        }
+    }
+</script>
+</body>
+</html>

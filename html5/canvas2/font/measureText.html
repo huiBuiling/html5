@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本的度量</title>
+</head>
+<body>
+<!--
+使用context.measureText(string).width 获得文本的宽度
+-->
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+
+<script>
+    window.onload=function () {
+        var canvas = document.getElementById('canvas');
+        canvas.width = 500;
+        canvas.height = 500;
+        var context = canvas.getContext('2d');
+
+        context.font='bold 30px Microsoft Yahei';  //设置字体
+        context.fillText('文本的度量',100,100);
+        alert('该文本的宽度为'+context.measureText('文本的度量').width+'px');
+
+    };
+</script>
+</body>
+</html>

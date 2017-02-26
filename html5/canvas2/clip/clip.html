@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>clip和剪辑区域</title>
+    <style>
+        #canvas{
+            border:1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<!--
+context.clip()  剪辑
+将clip之前的路径作为画布的新环境
+-->
+<canvas id="canvas">
+    当前浏览器不支持Canvas
+</canvas>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var canvas = document.getElementById('canvas');
+        canvas.width=800;
+        canvas.height=800;
+        var context=canvas.getContext('2d');
+
+        context.beginPath();
+        context.fillStyle='black';
+        context.fillRect(0,0,canvas.width,canvas.height);
+
+        context.beginPath();
+        context.arc(400,400,200,0,Math.PI*2);
+        context.fillStyle='white';
+        context.fill();
+        context.clip();
+
+
+        context.font='bold 100px Arial';
+        context.textAlign='center';
+        context.fillStyle='red';
+        context.fillText('canvas',canvas.width/2,canvas.height/2);
+
+    }
+</script>
+</body>
+</html>

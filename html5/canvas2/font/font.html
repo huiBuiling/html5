@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字渲染基础</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+
+<script>
+    window.onload=function () {
+        var canvas = document.getElementById('canvas');
+        canvas.width = 500;
+        canvas.height = 500;
+        var context = canvas.getContext('2d');
+
+        //绘制实心文本
+        context.font='bold 40px Microsoft Yahei';  //设置字体
+        context.fillText('欢迎大家学习canvas',50,100); //在（50,100）处绘制实心文本
+
+        //绘制空心文本
+        context.lineWidth=2;
+        context.strokeStyle='#058';
+        context.strokeText('欢迎大家学习canvas',50,200);  //绘制空心文本
+
+        //设置最大的宽度
+        context.fillText('欢迎大家学习canvas',50,300,350);
+        //设置第四个参数，即最大的宽度，可能会被压缩
+        context.strokeText('欢迎大家学习canvas',50,400,350);
+
+        //设置渐变效果
+        var linearGrad=context.createLinearGradient(0,0,500,0);
+        linearGrad.addColorStop(0.0,'red');
+        linearGrad.addColorStop(0.25,'orange');
+        linearGrad.addColorStop(0.5,'yellow');
+        linearGrad.addColorStop(0.75,'green');
+        linearGrad.addColorStop(1.0,'purple');
+        context.fillStyle=linearGrad;
+        context.fillText('欢迎大家学习canvas',40,450);
+    };
+</script>
+</body>
+</html>

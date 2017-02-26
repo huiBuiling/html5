@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本对齐之垂直对齐</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto;">
+</canvas>
+
+<script>
+    window.onload=function () {
+        var canvas = document.getElementById('canvas');
+        canvas.width = 500;
+        canvas.height = 500;
+        var context = canvas.getContext('2d');
+
+        context.font='bold 30px Microsoft Yahei';  //设置字体
+
+        context.textBaseline='top';
+        context.fillText('textBaseline=top',40,100);
+        drawBaseline(context,100);
+
+        context.textBaseline='middle';
+        context.fillText('textBaseline=middle',40,200);
+        drawBaseline(context,200);
+
+        context.textBaseline='bottom';
+        context.fillText('textBaseline=bottom',40,300);
+        drawBaseline(context,300);
+
+        /**
+         * 辅助线
+         * @param cxt
+         * @param y
+         */
+        function drawBaseline(cxt,y) {
+            cxt.beginPath();
+            cxt.moveTo(0,y);
+            cxt.lineTo(500,y);
+            cxt.stroke();
+        }
+
+    };
+</script>
+</body>
+</html>
